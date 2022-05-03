@@ -1,0 +1,17 @@
+FROM centos:7
+MAINTAINER Shigeru Morifuku
+LABEL version="1.0"
+LABEL description="Docker EPC - PGWU Container"
+CMD echo "PGW starts..."
+#
+RUN echo "Building PGWU..."
+RUN yum -y install net-tools dhclient openssh-server tcpdump nmap-ncat ethtool
+#
+# Development Environment
+RUN yum -y install make gcc gcc-c++ wget rsync which gdb epel-release
+RUN yum -y install cmake3
+#
+RUN mkdir /opt/DockerEPC
+RUN mkdir /opt/DockerEPC/bin
+RUN mkdir /opt/DockerEPC/log
+#
